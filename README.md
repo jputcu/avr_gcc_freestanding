@@ -1,15 +1,18 @@
 avr gcc freestanding
 =================
+
+~~~~
 BASE=$HOME/avr-gcc-freestanding
 mkdir $BASE
 cd $BASE
 
 mkdir $BASE/build
 PREFIX=$BASE/build
-export $PREFIX
+export PREFIX
 
 PATH=$BASE/build/bin:$PATH
 export PATH
+~~~~
 
 ~~~~
 wget https://ftp.gnu.org/gnu/binutils/binutils-2.41.tar.bz2
@@ -34,7 +37,7 @@ make install
 ~~~~
 
 ~~~~
-wget http://download.savannah.gnu.org/releases/avr-libc/avr-libc-user-manual-2.1.0.tar.bz2
+wget http://download.savannah.gnu.org/releases/avr-libc/avr-libc-2.1.0.tar.bz2
 bunzip2 -c avr-libc-2.1.0.tar.bz2  | tar xf -
 cd avr-libc-2.1.0/
 mkdir obj-avr
