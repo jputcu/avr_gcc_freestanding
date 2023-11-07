@@ -55,6 +55,20 @@ make -j4
 make install
 ~~~~
 
+Result
+======
+Built on Linux (Manjaro) and Windows (msys2).
+
+~~~~~
+$ ls $PREFIX/bin/
+avr-addr2line.exe  avr-as.exe   avr-c++filt.exe  avr-elfedit.exe  avr-gcc.exe         avr-gcc-ar.exe  avr-gcc-ranlib.exe  avr-gcov-dump.exe  avr-gprof.exe   avr-ld.exe        avr-man     avr-objcopy.exe  avr-ranlib.exe   avr-size.exe     avr-strip.exe
+avr-ar.exe         avr-c++.exe  avr-cpp.exe      avr-g++.exe      avr-gcc-13.2.0.exe  avr-gcc-nm.exe  avr-gcov.exe        avr-gcov-tool.exe  avr-ld.bfd.exe  avr-lto-dump.exe  avr-nm.exe  avr-objdump.exe  avr-readelf.exe  avr-strings.exe
+
+$ ls $PREFIX/avr/include/c++/13.2.0/
+algorithm  atomic  backward  bits    cfloat   compare   coroutine  cstdint  cxxabi.h  exception  ext         initializer_list  limits  new      numeric   ranges  scoped_allocator  span         tuple        typeindex  utility  version
+array      avr     bit       bitset  climits  concepts  cstddef    cstdlib  debug     expected   functional  iterator          memory  numbers  optional  ratio   source_location   string_view  type_traits  typeinfo   variant
+~~~~~
+
 Sources
 =======
 * https://www.nongnu.org/avr-libc/user-manual/install_tools.html
