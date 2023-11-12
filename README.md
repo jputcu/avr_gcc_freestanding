@@ -21,8 +21,8 @@ cd binutils-2.41
 mkdir obj-avr
 cd obj-avr/
 ../configure --prefix=$PREFIX  --target=avr --disable-nls
-make -j4
-make install
+make
+make install-strip
 ~~~~
 
 ~~~~
@@ -32,8 +32,8 @@ cd gcc-13.2.0/
 mkdir obj-avr
 cd obj-avr/
 ../configure --prefix=$PREFIX --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --with-dwarf2
-make -j4
-make install
+make
+make install-strip
 ~~~~
 
 ~~~~
@@ -44,15 +44,15 @@ mkdir obj-avr
 cd obj-avr
 ../bootstrap
 ../configure --prefix=$PREFIX --build=`../config.guess` --host=avr
-make -j4
+make
 make install
 ~~~~
 
 ~~~~
 cd gcc-13.2.0/avr-obj
 ../configure --prefix=$PREFIX --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --with-dwarf2 --with-newlib --disable-__cxa_atexit --disable-threads --disable-shared --disable-sjlj-exceptions --enable-libstdcxx --disable-hosted-libstdcxx --disable-bootstrap
-make -j4
-make install
+make
+make install-strip
 ~~~~
 
 Result
