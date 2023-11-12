@@ -1,5 +1,13 @@
 avr gcc freestanding
-=================
+====================
+
+Be able to develop modern C++, including freestanding **STL** on:
+1. `Windows 11(msys2)`: My development environment using `Microchip Studio` and `Clion`.
+2. `Manjaro Linux`: with `Clion`
+3. `FreeBSD`: Jenkins CI/CD 
+
+Most popular AVR toolchains, e.g. Arduino and Microchip, are dated and don't offer the STL.
+So we build it on all used platforms:
 
 ~~~~
 BASE=$HOME/avr-gcc-freestanding
@@ -20,7 +28,7 @@ bunzip2 -c binutils-2.41.tar.bz2  | tar xf -
 cd binutils-2.41
 mkdir obj-avr
 cd obj-avr/
-../configure --prefix=$PREFIX  --target=avr --disable-nls
+../configure --prefix=$PREFIX  --target=avr --disable-nls --disable-doc
 make
 make install-strip
 ~~~~
@@ -34,7 +42,7 @@ cd gcc-13.2.0/
 ./contrib/download_prerequisites
 mkdir obj-avr
 cd obj-avr/
-../configure --prefix=$PREFIX --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --with-dwarf2
+../configure --prefix=$PREFIX --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --disable-libada --disable-libgomp --disable-doc --with-avrlibc=yes --with-dwarf2 --disable-shared
 make
 make install-strip
 ~~~~
@@ -47,21 +55,21 @@ cd avr-libc-2.1.0/
 mkdir obj-avr
 cd obj-avr
 ../bootstrap
-../configure --prefix=$PREFIX --build=`../config.guess` --host=avr
+../configure --prefix=$PREFIX --build=`../config.guess` --host=avr --disable-doc
 make
 make install
 ~~~~
 
+To build the freestanding, we need previous step for the standard headers like `stdint.h`.
 ~~~~
-cd gcc-13.2.0/avr-obj
-../configure --prefix=$PREFIX --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --with-dwarf2 --with-newlib --disable-__cxa_atexit --disable-threads --disable-shared --disable-sjlj-exceptions --enable-libstdcxx --disable-hosted-libstdcxx --disable-bootstrap
+cd gcc-13.2.0/obj-avr/
+../configure --prefix=$PREFIX --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --disable-libada --disable-libgomp --disable-doc --with-avrlibc=yes --with-newlib --with-dwarf2 --disable-__cxa_atexit --disable-threads --disable-shared --disable-sjlj-exceptions --enable-libstdcxx --disable-hosted-libstdcxx --disable-bootstrap
 make
 make install-strip
 ~~~~
 
 Result
 ======
-Built on Linux (Manjaro) and Windows (msys2).
 
 ~~~~~
 $ ls $PREFIX/bin/
