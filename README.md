@@ -10,7 +10,7 @@ mkdir $BASE/build
 PREFIX=$BASE/build
 export PREFIX
 
-PATH=$BASE/build/bin:$PATH
+PATH=$PREFIX/bin:$PATH
 export PATH
 ~~~~
 
@@ -25,6 +25,8 @@ make
 make install-strip
 ~~~~
 
+On `FreeBSD` install and use `gmake` instead.
+
 ~~~~
 wget https://ftp.gnu.org/gnu/gcc/gcc-13.2.0/gcc-13.2.0.tar.gz
 gunzip -c gcc-13.2.0.tar.gz | tar xf -
@@ -35,6 +37,7 @@ cd obj-avr/
 make
 make install-strip
 ~~~~
+Arduino has: `--enable-fixed-point`
 
 ~~~~
 wget http://download.savannah.gnu.org/releases/avr-libc/avr-libc-2.1.0.tar.bz2
@@ -74,4 +77,6 @@ Sources
 * https://www.nongnu.org/avr-libc/user-manual/install_tools.html
 * https://gist.github.com/ricardocosme/5ec8ad05b5f4adb66464a146dcc41545
 * https://github.com/ZakKemble/avr-gcc-build/blob/master/avr-gcc-build.sh
+* https://gitlab.archlinux.org/archlinux/packaging/packages/avr-gcc/-/blob/main/PKGBUILD
+* https://cgit.freebsd.org/ports/tree/devel/avr-gcc/Makefile
 
