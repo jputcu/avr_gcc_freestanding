@@ -31,6 +31,7 @@ On `FreeBSD` install and use `gmake` instead.
 wget https://ftp.gnu.org/gnu/gcc/gcc-13.2.0/gcc-13.2.0.tar.gz
 gunzip -c gcc-13.2.0.tar.gz | tar xf -
 cd gcc-13.2.0/
+./contrib/download_prerequisites
 mkdir obj-avr
 cd obj-avr/
 ../configure --prefix=$PREFIX --target=avr --enable-languages=c,c++ --disable-nls --disable-libssp --with-dwarf2
